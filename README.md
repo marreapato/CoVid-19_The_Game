@@ -1,4 +1,4 @@
 # CoVid-19_The_Game
-First game made in python, designed to learn the basics of the library Pygame.
+A simple game designed with the Pygame library
 
 - [Scientist Sprite available here](https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgKCdvImeCww/view) 
