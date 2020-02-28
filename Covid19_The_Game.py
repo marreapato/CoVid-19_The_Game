@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-from in_game_Classes import Settings
+from settings import Settings
 
 #the funtion is supposed to initialize the game, create a screen object and watch for the events
 
