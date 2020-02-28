@@ -10,14 +10,14 @@ class Scientist():
 
         #loading the scientist
         self.image=pygame.image.load("Covid_Scientist.bmp")
-        self.rect=self.image.get_rect()
+        self.image_rect=self.image.get_rect()
         self.screen_rect=screen.get_rect()
 
         #start each new scientist in the bottom center of the screen
-        self.rect.centerx=self.screen_rect.centerx
-        self.rect.bottom=self.screen_rect.bottom
+        self.image_rect.centerx=self.screen_rect.centerx
+        self.image_rect.bottom=self.screen_rect.bottom
 
     def blitme(self):
         #drawn the scientist at its current location
-        self.screen.blit(self.image,self.rect)
+        self.screen.blit(self.image,self.image_rect)
 
