@@ -6,4 +6,4 @@ The in-game sprites were caught from [this website](https://opengameart.org/art-
 - [Scientist Sprite available here](https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgKCdvImeCww/view) 
 - [Coronavirus Sprite available here](https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgKDdm4LYCgw/view) 
 
-This project was done while studying the book Python Crash Course by Eric Mattes
+This project was built while studying the book Python Crash Course by Eric Mattes
