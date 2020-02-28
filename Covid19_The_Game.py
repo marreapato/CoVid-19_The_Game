@@ -2,7 +2,7 @@ import sys
 
 import pygame
 
-#the funtion is suppose to initialize the game, create a screen object and watch for the events
+#the funtion is supposed to initialize the game, create a screen object and watch for the events
 
 def run_game():
 
