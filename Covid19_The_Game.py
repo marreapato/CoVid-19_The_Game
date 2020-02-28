@@ -7,7 +7,7 @@ from settings import Settings
 from scientist import Scientist
 
 
-# the funtion is supposed to initialize the game, create a screen object and watch for the events
+# the function is supposed to initialize the game, create a screen object and watch for the events
 
 def run_game():
     pygame.init()
