@@ -18,3 +18,4 @@ def update_screen(ai_settings,screen,scientist):
 
     pygame.display.flip()
 
+#bruno.dmasceno@gmail.com
