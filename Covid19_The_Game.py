@@ -34,11 +34,7 @@ def run_game():
         gf.events()
         # Drawn the mostly recent screen
 
-        screen.fill(ai_settings.bg_color)
-
-        scientist.blitme()#drawns the scientist
-
-        pygame.display.flip()
+        gf.update_screen(ai_settings,screen,scientist)
 
 
 run_game()
