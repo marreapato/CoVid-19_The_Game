@@ -9,7 +9,7 @@ class Scientist():
         self.screen=screen
 
         #loading the scientist
-        self.image=pygame.image.load("Covid_Scientist.bmp")
+        self.image=pygame.image.load("Covid_scientist.bmp")
         self.image_rect=self.image.get_rect()
         self.screen_rect=screen.get_rect()
 
