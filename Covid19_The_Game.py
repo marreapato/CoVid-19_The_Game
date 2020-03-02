@@ -6,6 +6,9 @@ from settings import Settings
 
 from scientist import Scientist
 
+import events as gf
+
+
 
 # the function is supposed to initialize the game, create a screen object and watch for the events
 
@@ -28,18 +31,14 @@ def run_game():
     while True:
 
         # watching for the events
-        for event in pygame.event.get():
+        gf.events()
+        # Drawn the mostly recent screen
 
-            if event.type == pygame.QUIT:
-                sys.exit()
+        screen.fill(ai_settings.bg_color)
 
-            # Drawn the mostly recent screen
+        scientist.blitme()#drawns the scientist
 
-            screen.fill(ai_settings.bg_color)
-
-            scientist.blitme()#drawns the scientist
-
-            pygame.display.flip()
+        pygame.display.flip()
 
 
 run_game()
