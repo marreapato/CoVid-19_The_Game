@@ -5,9 +5,10 @@ import pygame
 
 class Scientist():
 
-    def __init__(self,screen):
+    def __init__(self,ai_settings,screen):
 
         self.screen=screen
+        self.ai_settings=ai_settings
 
         #loading the scientist
         self.image=pygame.image.load("Covid_scientist.bmp")
@@ -18,6 +19,9 @@ class Scientist():
         self.image_rect.centerx=self.screen_rect.centerx
         self.image_rect.bottom=self.screen_rect.bottom
 
+        #storing a decimal value to the scientist's center, because the centerx function only holds integer values
+        self.center=float(self.image_rect.centerx)
+
         self.moving_right=False
         self.moving_left=False
     def blitme(self):
@@ -27,9 +31,19 @@ class Scientist():
     def update(self):#this function updates th position of the scientist
 
         if self.moving_right==True:
+            if self.moving_right and self.image_rect.right < self.screen_rect.right:
+                #limiting the right corner
 
-            self.image_rect.centerx+=1
+                self.center+=self.ai_settings.scientist_speed
 
         if self.moving_left==True:
 #it's better to use an if in both cases, because the user can press two buttons at the same time
-            self.image_rect.centerx-=1
+            if self.moving_left and self.image_rect.left > 0:
+                #limiting the left corner
+
+                self.center-=self.ai_settings.scientist_speed
+
+        #update the rect object from self.center
+
+        self.image_rect.centerx=self.center
+
