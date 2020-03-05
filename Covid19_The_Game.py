@@ -8,11 +8,10 @@ from scientist import Scientist
 
 import events as gf
 
-
-
 # the function is supposed to initialize the game, create a screen object and watch for the events
 
 def run_game():
+
     pygame.init()
 
     ai_settings = Settings()
@@ -22,16 +21,17 @@ def run_game():
 
     pygame.display.set_caption("Covid19 The Game")
 
-    #creting the scientist
+    #creating the scientist
 
-    scientist=Scientist(screen)
+    scientist=Scientist(ai_settings,screen)
 
     # main loop for the game
 
     while True:
 
         # watching for the events
-        gf.events()
+        gf.check_events(scientist)
+        scientist.update()
         # Drawn the mostly recent screen
 
         gf.update_screen(ai_settings,screen,scientist)
