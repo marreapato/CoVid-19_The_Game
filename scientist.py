@@ -19,11 +19,16 @@ class Scientist():
         self.image_rect.centerx=self.screen_rect.centerx
         self.image_rect.bottom=self.screen_rect.bottom
 
+
         #storing a decimal value to the scientist's center, because the centerx function only holds integer values
         self.center=float(self.image_rect.centerx)
+        self.centery=float(self.image_rect.bottom)
+
 
         self.moving_right=False
         self.moving_left=False
+        self.moving_up=False
+        self.moving_down=False
     def blitme(self):
         #drawn the scientist at its current location
         self.screen.blit(self.image,self.image_rect)
@@ -43,7 +48,26 @@ class Scientist():
 
                 self.center-=self.ai_settings.scientist_speed
 
+        if self.moving_down==True:
+
+            if self.moving_down and self.image_rect.bottom < self.screen_rect.bottom:
+
+                self.centery += self.ai_settings.scientist_speed
+
+
+        if self.moving_up==True:
+
+            if self.moving_up and self.image_rect.bottom > 150:
+
+                self.centery -= self.ai_settings.scientist_speed
+
+
+        self.image_rect.bottom = self.centery
+        self.image_rect.centerx = self.center
+
         #update the rect object from self.center
 
-        self.image_rect.centerx=self.center
+
+
+
 
