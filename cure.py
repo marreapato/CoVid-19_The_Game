@@ -24,3 +24,16 @@ class Cure(Sprite):
 
 #adding the update method later
 
+    def update(self):
+
+        #updates the decimal pos for the cure
+        self.y -= self.speed_factor
+
+        #update the rect position
+
+        self.rect.y=self.y
+
+
+    def draw_cure(self):
+
+        pygame.draw.rect(self.screen,self.color,self.rect)
