@@ -2,9 +2,12 @@ import sys
 
 import pygame
 
+from cure import Cure
+
 #Function designed to run the in-game events
 
-def check_keydown_events(event,scientist):#events triggered when pressing a key
+
+def check_keydown_events(event,ai_settings,screen,scientist,cure):#events triggered when pressing a key
 
     if event.key == pygame.K_RIGHT:  # BE CAREFUL, up there i am using .type while here i am using .key
 
@@ -21,6 +24,15 @@ def check_keydown_events(event,scientist):#events triggered when pressing a key
     elif event.key == pygame.K_DOWN:
 
         scientist.moving_down=True
+
+    elif event.key==pygame.K_SPACE:
+    #Creates a new cure fragment and adds it to the screen
+
+        new_cure=Cure(ai_settings,screen,scientist)
+
+        cure.add(new_cure)
+
+
 
 def check_key_up_events(event,scientist):#events triggered when realeasing a key
 
@@ -40,7 +52,7 @@ def check_key_up_events(event,scientist):#events triggered when realeasing a key
 
         scientist.moving_down = False
 
-def check_events(scientist):
+def check_events(ai_settings,screen,scientist,cure):
 
     for event in pygame.event.get():
 
@@ -50,7 +62,7 @@ def check_events(scientist):
 
         elif event.type==pygame.KEYDOWN:
 
-            check_keydown_events(event,scientist)
+            check_keydown_events(event,ai_settings,screen,scientist,cure)
 
 
         elif event.type==pygame.KEYUP:
@@ -61,13 +73,16 @@ def check_events(scientist):
 
 
 
-def update_screen(ai_settings,screen,scientist):
+def update_screen(ai_settings,screen,scientist,cure):
 
     screen.fill(ai_settings.bg_color)
 
     #ai_settings stands for the Settings() class' instance
 
     scientist.blitme()
+
+    for vaccine in cure.sprites():
+        vaccine.draw_cure()
 
     pygame.display.flip()
 
