@@ -2,6 +2,8 @@ import sys
 
 import pygame
 
+from pygame.sprite import Group
+
 from settings import Settings
 
 from scientist import Scientist
@@ -25,16 +27,29 @@ def run_game():
 
     scientist=Scientist(ai_settings,screen)
 
+    cure=Group()
+
     # main loop for the game
 
     while True:
 
         # watching for the events
-        gf.check_events(scientist)
+        gf.check_events(ai_settings,screen,scientist,cure)
         scientist.update()
+        cure.update()
+        #getting rid of cures that have disappeared
+
+        for vaccine in cure.copy():
+            if vaccine.rect.bottom<=0:
+                cure.remove(vaccine)
+
+            print(len(cure))
         # Drawn the mostly recent screen
 
-        gf.update_screen(ai_settings,screen,scientist)
+        gf.update_screen(ai_settings,screen,scientist,cure)
+
+
 
 
 run_game()
+#goodfellas
