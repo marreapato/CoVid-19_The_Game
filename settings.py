@@ -15,4 +15,5 @@ class Settings():
         self.cure_speed_factor=1
         self.cure_width=3
         self.cure_height=15
-        self.cure_color=(0,100,50)#green cure
+        self.cure_color=(0,100,50)
+        self.cure_allowed=3
