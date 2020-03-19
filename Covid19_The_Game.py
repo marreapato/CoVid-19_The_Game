@@ -36,14 +36,9 @@ def run_game():
         # watching for the events
         gf.check_events(ai_settings,screen,scientist,cure)
         scientist.update()
-        cure.update()
         #getting rid of cures that have disappeared
 
-        for vaccine in cure.copy():
-            if vaccine.rect.bottom<=0:
-                cure.remove(vaccine)
-
-            print(len(cure))
+        gf.update_cure(cure)
         # Drawn the mostly recent screen
 
         gf.update_screen(ai_settings,screen,scientist,cure)
@@ -52,4 +47,3 @@ def run_game():
 
 
 run_game()
-#goodfellas
