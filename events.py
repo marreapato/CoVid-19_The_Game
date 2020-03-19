@@ -28,9 +28,8 @@ def check_keydown_events(event,ai_settings,screen,scientist,cure):#events trigge
     elif event.key==pygame.K_SPACE:
     #Creates a new cure fragment and adds it to the screen
 
-        new_cure=Cure(ai_settings,screen,scientist)
+        fire_cure(ai_settings,screen,scientist,cure)
 
-        cure.add(new_cure)
 
 
 
@@ -86,3 +85,19 @@ def update_screen(ai_settings,screen,scientist,cure):
 
     pygame.display.flip()
 
+def update_cure(cure):
+
+    cure.update()
+
+    for vaccine in cure.copy():
+        if vaccine.rect.bottom <= 0:
+            cure.remove(vaccine)
+
+
+def fire_cure(ai_settings,screen,scientist,cure):
+
+    if len(cure) < ai_settings.cure_allowed:  # limiting the number of projectiles
+
+        new_cure = Cure(ai_settings, screen, scientist)
+
+        cure.add(new_cure)
