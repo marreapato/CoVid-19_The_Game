@@ -3,9 +3,11 @@ import pygame
 from pygame.sprite import Sprite
 
 class Cure(Sprite):
+
     def __init__(self,ai_settings,screen,scientist):
 
         super().__init__()
+
         self.screen=screen
 
         #creates a cure in (0,0) an then set the correct position
@@ -22,7 +24,6 @@ class Cure(Sprite):
 
         self.speed_factor=ai_settings.cure_speed_factor
 
-#adding the update method later
 
     def update(self):
 
@@ -36,4 +37,6 @@ class Cure(Sprite):
 
     def draw_cure(self):
 
+
         pygame.draw.rect(self.screen,self.color,self.rect)
+
