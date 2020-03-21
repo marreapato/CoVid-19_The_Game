@@ -4,8 +4,8 @@ import pygame
 
 from cure import Cure
 
+import time
 #Function designed to run the in-game events
-
 
 def check_keydown_events(event,ai_settings,screen,scientist,cure):#events triggered when pressing a key
 
@@ -30,10 +30,13 @@ def check_keydown_events(event,ai_settings,screen,scientist,cure):#events trigge
 
         fire_cure(ai_settings,screen,scientist,cure)
 
+    elif event.key==pygame.K_q:
 
+        sys.exit()
 
 
 def check_key_up_events(event,scientist):#events triggered when realeasing a key
+
 
     if event.key == pygame.K_RIGHT:
 
