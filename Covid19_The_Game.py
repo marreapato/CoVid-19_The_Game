@@ -10,6 +10,8 @@ from scientist import Scientist
 
 import events as gf
 
+from coronavirus import Covid_19
+
 # the function is supposed to initialize the game, create a screen object and watch for the events
 
 def run_game():
@@ -26,6 +28,7 @@ def run_game():
     #creating the scientist
 
     scientist=Scientist(ai_settings,screen)
+    covid=Covid_19(ai_settings,screen)
 
     cure=Group()
 
@@ -41,7 +44,7 @@ def run_game():
         gf.update_cure(cure)
         # Drawn the mostly recent screen
 
-        gf.update_screen(ai_settings,screen,scientist,cure)
+        gf.update_screen(ai_settings,screen,scientist,covid,cure)
 
 
 
