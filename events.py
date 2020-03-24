@@ -75,13 +75,14 @@ def check_events(ai_settings,screen,scientist,cure):
 
 
 
-def update_screen(ai_settings,screen,scientist,cure):
+def update_screen(ai_settings,screen,scientist,covid,cure):
 
     screen.fill(ai_settings.bg_color)
 
     #ai_settings stands for the Settings() class' instance
 
     scientist.blitme()
+    covid.blitme()
 
     for vaccine in cure.sprites():
         vaccine.draw_cure()
