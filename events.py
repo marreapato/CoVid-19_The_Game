@@ -4,6 +4,8 @@ import pygame
 
 from cure import Cure
 
+from coronavirus import Covid_19
+
 import time
 #Function designed to run the in-game events
 
@@ -75,14 +77,14 @@ def check_events(ai_settings,screen,scientist,cure):
 
 
 
-def update_screen(ai_settings,screen,scientist,covid,cure):
+def update_screen(ai_settings,screen,scientist,viruses,cure):
 
     screen.fill(ai_settings.bg_color)
 
     #ai_settings stands for the Settings() class' instance
 
     scientist.blitme()
-    covid.blitme()
+    viruses.draw(screen)
 
     for vaccine in cure.sprites():
         vaccine.draw_cure()
@@ -105,3 +107,26 @@ def fire_cure(ai_settings,screen,scientist,cure):
         new_cure = Cure(ai_settings, screen, scientist)
 
         cure.add(new_cure)
+
+
+def create_fleet(ai_settings,screen,viruses):
+    #create a virus and find the number of viruses in a row
+    #spacing between each virus is equal to one virus width
+
+    covid=Covid_19(ai_settings,screen)
+    covid_width=covid.rect.width
+
+    available_space_x=ai_settings.screen_width-(2*covid_width)
+
+    #number of viruses in the screen
+
+    number_viruses_x=int(available_space_x/(2*covid_width))
+
+    #create the first row of viruses
+    for number_virus in range(0,number_viruses_x):
+        #creates a virus and places it in the row
+        covid=Covid_19(ai_settings,screen)
+        covid.x=covid_width+2*covid_width*number_virus
+        covid.rect.x=covid.x
+        #adding to the group
+        viruses.add(covid)
