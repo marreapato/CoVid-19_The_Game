@@ -28,10 +28,9 @@ def run_game():
     #creating the scientist
 
     scientist=Scientist(ai_settings,screen)
-    covid=Covid_19(ai_settings,screen)
-
+    viruses=Group()
     cure=Group()
-
+    gf.create_fleet(ai_settings,screen,viruses)
     # main loop for the game
 
     while True:
@@ -44,9 +43,10 @@ def run_game():
         gf.update_cure(cure)
         # Drawn the mostly recent screen
 
-        gf.update_screen(ai_settings,screen,scientist,covid,cure)
+        gf.update_screen(ai_settings,screen,scientist,viruses,cure)
 
 
 
 
 run_game()
+
