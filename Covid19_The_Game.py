@@ -30,7 +30,7 @@ def run_game():
     scientist=Scientist(ai_settings,screen)
     viruses=Group()
     cure=Group()
-    gf.create_fleet(ai_settings,screen,viruses)
+    gf.create_fleet(ai_settings,screen,scientist,viruses)
     # main loop for the game
 
     while True:
