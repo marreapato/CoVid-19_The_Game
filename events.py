@@ -109,24 +109,50 @@ def fire_cure(ai_settings,screen,scientist,cure):
         cure.add(new_cure)
 
 
-def create_fleet(ai_settings,screen,viruses):
+def create_fleet(ai_settings,screen,scientist,viruses):
     #create a virus and find the number of viruses in a row
-    #spacing between each virus is equal to one virus width
 
-    covid=Covid_19(ai_settings,screen)
-    covid_width=covid.rect.width
+    covid = Covid_19(ai_settings, screen)
 
-    available_space_x=ai_settings.screen_width-(2*covid_width)
+    number_viruses_x=get_number_viruses_x(ai_settings,covid.rect.width)
 
-    #number of viruses in the screen
-
-    number_viruses_x=int(available_space_x/(2*covid_width))
+    number_rows = get_number_rows(ai_settings, scientist.image_rect.height, covid.rect.height)
 
     #create the first row of viruses
-    for number_virus in range(0,number_viruses_x):
-        #creates a virus and places it in the row
-        covid=Covid_19(ai_settings,screen)
-        covid.x=covid_width+2*covid_width*number_virus
-        covid.rect.x=covid.x
-        #adding to the group
-        viruses.add(covid)
+    for row_number in range(0,number_rows):
+        for number_virus in range(0,number_viruses_x):
+            create_virus(ai_settings,screen,viruses,number_virus,row_number)
+
+
+def get_number_viruses_x(ai_settings,covid_width):
+    # spacing between each virus is equal to one virus width
+    available_space_x = ai_settings.screen_width - (2 * covid_width)
+
+    # number of viruses in the screen
+
+    number_viruses_x = int(available_space_x / (2 * covid_width))
+
+    return number_viruses_x
+
+def create_virus(ai_settings,screen,viruses,number_virus,row_number):
+    # creates a virus and places it in the row
+    covid = Covid_19(ai_settings, screen)
+    covid_width = covid.rect.width
+    covid.x = covid_width + 2 * covid_width * number_virus
+    covid.rect.x = covid.x
+    covid.rect.y=covid.rect.height+2*covid.rect.height*row_number
+    # adding to the group
+    viruses.add(covid)
+
+
+def get_number_rows(ai_settings,scientist_height,covid_height):
+
+    available_space_y=(ai_settings.screen_height-(3*covid_height)-scientist_height)
+
+    number_rows=int(available_space_y/(2*covid_height))
+
+    return number_rows
+
+
+
+
