@@ -153,6 +153,5 @@ def get_number_rows(ai_settings,scientist_height,covid_height):
 
     return number_rows
 
-
-
-
+def update_viruses(covid):
+    covid.update()
