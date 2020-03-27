@@ -29,3 +29,6 @@ class Covid_19(Sprite):
 
 
 
+    def update(self):
+        self.x+=self.ai_settings.corona_speed_factor
+        self.rect.x=self.x
