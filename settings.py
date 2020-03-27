@@ -17,3 +17,7 @@ class Settings():
         self.cure_height=15
         self.cure_color=(0,100,50)
         self.cure_allowed=3
+
+        #virus settings
+
+        self.corona_speed_factor=1
