@@ -21,3 +21,6 @@ class Settings():
         #virus settings
 
         self.corona_speed_factor=1
+        self.fleet_drop_speed=10
+        self.fleet_direction=1
+        #1 represents right and -1 represents left
