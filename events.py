@@ -153,5 +153,23 @@ def get_number_rows(ai_settings,scientist_height,covid_height):
 
     return number_rows
 
-def update_viruses(covid):
+def update_viruses(ai_settings,covid):
+    check_fleet_edges(ai_settings,covid)
     covid.update()
+
+#changing the direction of the virus fleet
+
+def change_fleet_direction(ai_settings,covid):
+    for virus in covid.sprites():
+        virus.rect.y+=ai_settings.fleet_drop_speed
+    ai_settings.fleet_direction*=-1
+
+
+def check_fleet_edges(ai_settings,covid):
+
+    for virus in covid.sprites():
+        if virus.check_edges()==True:
+            change_fleet_direction(ai_settings,covid)
+            break
+
+
