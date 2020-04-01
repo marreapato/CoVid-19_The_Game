@@ -91,13 +91,7 @@ def update_screen(ai_settings,screen,scientist,viruses,cure):
 
     pygame.display.flip()
 
-def update_cure(cure):
 
-    cure.update()
-
-    for vaccine in cure.copy():
-        if vaccine.rect.bottom <= 0:
-            cure.remove(vaccine)
 
 
 def fire_cure(ai_settings,screen,scientist,cure):
@@ -156,6 +150,7 @@ def get_number_rows(ai_settings,scientist_height,covid_height):
 def update_viruses(ai_settings,covid):
     check_fleet_edges(ai_settings,covid)
     covid.update()
+    #virus' behaviour in the game
 
 #changing the direction of the virus fleet
 
@@ -173,3 +168,20 @@ def check_fleet_edges(ai_settings,covid):
             break
 
 
+def update_cure(ai_settings,screen,scientist,viruses,cure):
+
+    cure.update()
+
+    for vaccine in cure.copy():
+        if vaccine.rect.bottom <= 0:
+            cure.remove(vaccine)
+    check_cure_collision(ai_settings,screen,scientist,viruses,cure)
+
+def check_cure_collision(ai_settings,screen,scientist,viruses,cure):
+    # check for collisions between a cure and a virus
+    # in case the virus is hitten by a cure, the virus dies
+    collisions = pygame.sprite.groupcollide(viruses, cure, True, True)
+
+    if len(viruses) == 0:
+        cure.empty()
+        create_fleet(ai_settings, screen, scientist, viruses)
