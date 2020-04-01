@@ -12,7 +12,7 @@ class Settings():
 
         #Creating the cure
 
-        self.cure_speed_factor=1
+        self.cure_speed_factor=3
         self.cure_width=3
         self.cure_height=15
         self.cure_color=(0,100,50)
