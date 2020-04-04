@@ -8,6 +8,7 @@ class Settings():
         self.screen_height=600
         self.bg_color=(100,10,0)
         self.scientist_speed=1.5
+        self.scientist_limit=3
 
 
         #Creating the cure
