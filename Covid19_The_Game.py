@@ -46,7 +46,7 @@ def run_game():
 
             gf.update_cure(ai_settings,screen,scientist,viruses,cure)
             gf.update_viruses(ai_settings,stats,screen,scientist,viruses,cure)
-        # Drawn the mostly recent screen
+        # Draw mostly recent screen
 
         gf.update_screen(ai_settings,screen,scientist,viruses,cure)
 
