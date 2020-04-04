@@ -7,6 +7,9 @@ from cure import Cure
 from coronavirus import Covid_19
 
 import time
+
+from time import sleep
+
 #Function designed to run the in-game events
 
 def check_keydown_events(event,ai_settings,screen,scientist,cure):#events triggered when pressing a key
@@ -110,7 +113,7 @@ def create_fleet(ai_settings,screen,scientist,viruses):
 
     number_viruses_x=get_number_viruses_x(ai_settings,covid.rect.width)
 
-    number_rows = get_number_rows(ai_settings, scientist.image_rect.height, covid.rect.height)
+    number_rows = get_number_rows(ai_settings, scientist.rect.height, covid.rect.height)
 
     #create the first row of viruses
     for row_number in range(0,number_rows):
@@ -147,10 +150,17 @@ def get_number_rows(ai_settings,scientist_height,covid_height):
 
     return number_rows
 
-def update_viruses(ai_settings,covid):
+def update_viruses(ai_settings,stats,screen,scientist,covid,cure):
     check_fleet_edges(ai_settings,covid)
     covid.update()
     #virus' behaviour in the game
+
+    #looking for virus-scientist collisions
+    if pygame.sprite.spritecollideany(scientist,covid):
+        scientist_hit(ai_settings,stats,screen,scientist,covid,cure)
+
+    #looking for viruses hitting the bottom of the screen
+    check_viruses_bottom(ai_settings,stats,screen,scientist,covid,cure)
 
 #changing the direction of the virus fleet
 
@@ -185,3 +195,30 @@ def check_cure_collision(ai_settings,screen,scientist,viruses,cure):
     if len(viruses) == 0:
         cure.empty()
         create_fleet(ai_settings, screen, scientist, viruses)
+
+def scientist_hit(ai_settings,stats,screen,scientist,viruses,cure):
+    #lower number of scientists left
+    if stats.scientist_left > 0:
+        stats.scientist_left-=1
+    #empty the list of viruses and vaccines
+        viruses.empty()
+        cure.empty()
+
+
+    #create a new fleet and center the scientist
+        create_fleet(ai_settings,screen,scientist,viruses)
+        scientist.center_scientist()
+    else:
+        stats.game_active=False
+
+
+    #pause
+    sleep(0.5)
+
+def check_viruses_bottom(ai_settings,stats,screen,scientist,viruses,cure):
+    screen_rect=screen.get_rect()
+
+    for covid in viruses.sprites():
+        if covid.rect.bottom>=screen_rect.bottom:
+            scientist_hit(ai_settings,stats,screen,scientist,viruses,cure)
+            break
