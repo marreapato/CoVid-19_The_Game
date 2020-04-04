@@ -12,6 +12,8 @@ import events as gf
 
 from coronavirus import Covid_19
 
+from game_stats import Games_stats
+
 # the function is supposed to initialize the game, create a screen object and watch for the events
 
 def run_game():
@@ -30,6 +32,7 @@ def run_game():
     scientist=Scientist(ai_settings,screen)
     viruses=Group()
     cure=Group()
+    stats=Games_stats(ai_settings)
     gf.create_fleet(ai_settings,screen,scientist,viruses)
     # main loop for the game
 
@@ -37,11 +40,12 @@ def run_game():
 
         # watching for the events
         gf.check_events(ai_settings,screen,scientist,cure)
-        scientist.update()
+        if stats.game_active==True:
+            scientist.update()
         #getting rid of cures that have disappeared
 
-        gf.update_cure(ai_settings,screen,scientist,viruses,cure)
-        gf.update_viruses(ai_settings,viruses)
+            gf.update_cure(ai_settings,screen,scientist,viruses,cure)
+            gf.update_viruses(ai_settings,stats,screen,scientist,viruses,cure)
         # Drawn the mostly recent screen
 
         gf.update_screen(ai_settings,screen,scientist,viruses,cure)
