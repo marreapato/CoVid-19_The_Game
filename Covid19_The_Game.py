@@ -14,6 +14,9 @@ from coronavirus import Covid_19
 
 from game_stats import Games_stats
 
+from button import Button
+
+
 # the function is supposed to initialize the game, create a screen object and watch for the events
 
 def run_game():
@@ -24,6 +27,11 @@ def run_game():
 
     screen = pygame.display.set_mode(
         (ai_settings.screen_width, ai_settings.screen_height))  # uses a tuple to set the dimensions
+
+    #making the play button
+
+    play_button=Button(ai_settings,screen,"Play")
+
 
     pygame.display.set_caption("Covid19 The Game")
 
@@ -39,16 +47,16 @@ def run_game():
     while True:
 
         # watching for the events
-        gf.check_events(ai_settings,screen,scientist,cure)
+        gf.check_events(ai_settings,screen,stats,scientist,cure,viruses,play_button)
         if stats.game_active==True:
             scientist.update()
         #getting rid of cures that have disappeared
 
             gf.update_cure(ai_settings,screen,scientist,viruses,cure)
             gf.update_viruses(ai_settings,stats,screen,scientist,viruses,cure)
-        # Draw mostly recent screen
+        # Drawn the mostly recent screen
 
-        gf.update_screen(ai_settings,screen,scientist,viruses,cure)
+        gf.update_screen(ai_settings,screen,stats,scientist,viruses,cure,play_button)
 
 
 
