@@ -59,7 +59,7 @@ def check_key_up_events(event,scientist):#events triggered when realeasing a key
 
         scientist.moving_down = False
 
-def check_events(ai_settings,screen,scientist,cure):
+def check_events(ai_settings,screen,stats,scientist,cure,viruses,play_button):
 
     for event in pygame.event.get():
 
@@ -76,11 +76,31 @@ def check_events(ai_settings,screen,scientist,cure):
 
             check_key_up_events(event,scientist)
 
+        elif event.type==pygame.MOUSEBUTTONDOWN:
+
+            mouse_x,mouse_y=pygame.mouse.get_pos()
+            check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scientist,cure,viruses)
+
+def check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scientist,cure,viruses):
+
+#re_shaping the game
+    button_clicked=play_button.rect.collidepoint(mouse_x,mouse_y)
+    if button_clicked==True and stats.game_active==False:
+        pygame.mouse.set_visible(False)
+        stats.reset_stats()
+        stats.game_active=True
+
+        viruses.empty()
+        cure.empty()
+
+        create_fleet(ai_settings,screen,scientist,viruses)
+        scientist.center_scientist()
 
 
 
 
-def update_screen(ai_settings,screen,scientist,viruses,cure):
+
+def update_screen(ai_settings,screen,stats,scientist,viruses,cure,play_button):
 
     screen.fill(ai_settings.bg_color)
 
@@ -91,6 +111,11 @@ def update_screen(ai_settings,screen,scientist,viruses,cure):
 
     for vaccine in cure.sprites():
         vaccine.draw_cure()
+
+    #draw the button if the game is inactive
+
+    if not stats.game_active:
+        play_button.draw_button()
 
     pygame.display.flip()
 
@@ -209,6 +234,7 @@ def scientist_hit(ai_settings,stats,screen,scientist,viruses,cure):
         create_fleet(ai_settings,screen,scientist,viruses)
         scientist.center_scientist()
     else:
+        pygame.mouse.set_visible(True)
         stats.game_active=False
 
 
