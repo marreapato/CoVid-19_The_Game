@@ -13,8 +13,8 @@ class Cure(Sprite):
         #creates a cure in (0,0) an then set the correct position
 
         self.rect=pygame.Rect(0,0,ai_settings.cure_width,ai_settings.cure_height)
-        self.rect.centerx=scientist.image_rect.centerx
-        self.rect.top=scientist.image_rect.top
+        self.rect.centerx=scientist.rect.centerx
+        self.rect.top=scientist.rect.top
 
         #storing the cure's position as a decimal value
 
