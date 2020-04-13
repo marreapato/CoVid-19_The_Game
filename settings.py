@@ -7,13 +7,13 @@ class Settings():
         self.screen_width=1000
         self.screen_height=600
         self.bg_color=(100,10,0)
-        self.scientist_speed=1.5
+
         self.scientist_limit=3
 
 
         #Creating the cure
 
-        self.cure_speed_factor=3
+
         self.cure_width=3
         self.cure_height=15
         self.cure_color=(0,100,50)
@@ -21,7 +21,26 @@ class Settings():
 
         #virus settings
 
-        self.corona_speed_factor=1
+
         self.fleet_drop_speed=10
-        self.fleet_direction=1
+
+
+        #speeding up the game
+        self.speedup_scale=1.1
+
+        self.initialize_dinamic_settings()
+
+    def initialize_dinamic_settings(self):
+
+        self.scientist_speed=1.5
+        self.cure_speed_factor=3
+        self.corona_speed_factor=1
+
         #1 represents right and -1 represents left
+        self.fleet_direction=1
+
+    def increase_speed(self):
+
+        self.scientist_speed*=self.speedup_scale
+        self.corona_speed_factor*=self.speedup_scale
+        self.cure_speed_factor*=self.speedup_scale
