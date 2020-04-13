@@ -86,6 +86,7 @@ def check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scien
 #re_shaping the game
     button_clicked=play_button.rect.collidepoint(mouse_x,mouse_y)
     if button_clicked==True and stats.game_active==False:
+        ai_settings.initialize_dinamic_settings()
         pygame.mouse.set_visible(False)
         stats.reset_stats()
         stats.game_active=True
@@ -219,6 +220,7 @@ def check_cure_collision(ai_settings,screen,scientist,viruses,cure):
 
     if len(viruses) == 0:
         cure.empty()
+        ai_settings.increase_speed()
         create_fleet(ai_settings, screen, scientist, viruses)
 
 def scientist_hit(ai_settings,stats,screen,scientist,viruses,cure):
