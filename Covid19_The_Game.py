@@ -16,6 +16,7 @@ from game_stats import Games_stats
 
 from button import Button
 
+from scoreboard import Scoreboard
 
 # the function is supposed to initialize the game, create a screen object and watch for the events
 
@@ -40,7 +41,11 @@ def run_game():
     scientist=Scientist(ai_settings,screen)
     viruses=Group()
     cure=Group()
+
+    #storing stats and score
     stats=Games_stats(ai_settings)
+    score_board=Scoreboard(ai_settings,screen,stats)
+
     gf.create_fleet(ai_settings,screen,scientist,viruses)
     # main loop for the game
 
@@ -56,7 +61,7 @@ def run_game():
             gf.update_viruses(ai_settings,stats,screen,scientist,viruses,cure)
         # Drawn the mostly recent screen
 
-        gf.update_screen(ai_settings,screen,stats,scientist,viruses,cure,play_button)
+        gf.update_screen(ai_settings,screen,stats,score_board,scientist,viruses,cure,play_button)
 
 
 
