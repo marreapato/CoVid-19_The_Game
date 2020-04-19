@@ -57,7 +57,7 @@ def run_game():
             scientist.update()
         #getting rid of cures that have disappeared
 
-            gf.update_cure(ai_settings,screen,scientist,viruses,cure)
+            gf.update_cure(ai_settings,screen,stats,score_board,scientist,viruses,cure)
             gf.update_viruses(ai_settings,stats,screen,scientist,viruses,cure)
         # Drawn the mostly recent screen
 
