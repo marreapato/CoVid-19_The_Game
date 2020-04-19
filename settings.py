@@ -39,8 +39,13 @@ class Settings():
         #1 represents right and -1 represents left
         self.fleet_direction=1
 
+        #scoring system
+        self.virus_points=50
+
     def increase_speed(self):
 
         self.scientist_speed*=self.speedup_scale
         self.corona_speed_factor*=self.speedup_scale
         self.cure_speed_factor*=self.speedup_scale
+
+
