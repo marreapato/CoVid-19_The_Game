@@ -258,3 +258,5 @@ def check_viruses_bottom(ai_settings,stats,screen,scientist,viruses,cure):
         if covid.rect.bottom>=screen_rect.bottom:
             scientist_hit(ai_settings,stats,screen,scientist,viruses,cure)
             break
+
+            
