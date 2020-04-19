@@ -101,7 +101,7 @@ def check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scien
 
 
 
-def update_screen(ai_settings,screen,stats,scientist,viruses,cure,play_button):
+def update_screen(ai_settings,screen,stats,score_board,scientist,viruses,cure,play_button):
 
     screen.fill(ai_settings.bg_color)
 
@@ -112,6 +112,10 @@ def update_screen(ai_settings,screen,stats,scientist,viruses,cure,play_button):
 
     for vaccine in cure.sprites():
         vaccine.draw_cure()
+
+    #draw the score information
+    score_board.show_score()
+
 
     #draw the button if the game is inactive
 
@@ -204,19 +208,23 @@ def check_fleet_edges(ai_settings,covid):
             break
 
 
-def update_cure(ai_settings,screen,scientist,viruses,cure):
+def update_cure(ai_settings,screen,stats,score_board,scientist,viruses,cure):
 
     cure.update()
 
     for vaccine in cure.copy():
         if vaccine.rect.bottom <= 0:
             cure.remove(vaccine)
-    check_cure_collision(ai_settings,screen,scientist,viruses,cure)
+    check_cure_collision(ai_settings,screen,stats,score_board,scientist,viruses,cure)
 
-def check_cure_collision(ai_settings,screen,scientist,viruses,cure):
+def check_cure_collision(ai_settings,screen,stats,score_board,scientist,viruses,cure):
     # check for collisions between a cure and a virus
     # in case the virus is hitten by a cure, the virus dies
     collisions = pygame.sprite.groupcollide(viruses, cure, True, True)
+
+    if collisions:
+        stats.score+=ai_settings.virus_points
+        score_board.prep_score()
 
     if len(viruses) == 0:
         cure.empty()
