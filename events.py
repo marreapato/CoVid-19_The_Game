@@ -223,8 +223,10 @@ def check_cure_collision(ai_settings,screen,stats,score_board,scientist,viruses,
     collisions = pygame.sprite.groupcollide(viruses, cure, True, True)
 
     if collisions:
-        stats.score+=ai_settings.virus_points
-        score_board.prep_score()
+        for viruses in collisions.values():
+
+            stats.score+=ai_settings.virus_points*len(viruses)
+            score_board.prep_score()
 
     if len(viruses) == 0:
         cure.empty()
@@ -258,5 +260,3 @@ def check_viruses_bottom(ai_settings,stats,screen,scientist,viruses,cure):
         if covid.rect.bottom>=screen_rect.bottom:
             scientist_hit(ai_settings,stats,screen,scientist,viruses,cure)
             break
-
-            
