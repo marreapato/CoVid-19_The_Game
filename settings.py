@@ -28,6 +28,9 @@ class Settings():
         #speeding up the game
         self.speedup_scale=1.1
 
+        #how quick the virus' point value increases
+        self.score_scale=1.5
+
         self.initialize_dinamic_settings()
 
     def initialize_dinamic_settings(self):
@@ -47,5 +50,7 @@ class Settings():
         self.scientist_speed*=self.speedup_scale
         self.corona_speed_factor*=self.speedup_scale
         self.cure_speed_factor*=self.speedup_scale
+
+        self.virus_points=int(self.virus_points*self.score_scale)#increasing the score as the game speeds up
 
 
