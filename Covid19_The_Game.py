@@ -52,7 +52,7 @@ def run_game():
     while True:
 
         # watching for the events
-        gf.check_events(ai_settings,screen,stats,scientist,cure,viruses,play_button)
+        gf.check_events(ai_settings,screen,stats,score_board,scientist,cure,viruses,play_button)
         if stats.game_active==True:
             scientist.update()
         #getting rid of cures that have disappeared
