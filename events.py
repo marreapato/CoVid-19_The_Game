@@ -59,7 +59,7 @@ def check_key_up_events(event,scientist):#events triggered when realeasing a key
 
         scientist.moving_down = False
 
-def check_events(ai_settings,screen,stats,scientist,cure,viruses,play_button):
+def check_events(ai_settings,screen,stats,score_board,scientist,cure,viruses,play_button):
 
     for event in pygame.event.get():
 
@@ -79,9 +79,13 @@ def check_events(ai_settings,screen,stats,scientist,cure,viruses,play_button):
         elif event.type==pygame.MOUSEBUTTONDOWN:
 
             mouse_x,mouse_y=pygame.mouse.get_pos()
-            check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scientist,cure,viruses)
+            check_play_button(ai_settings,screen,stats,score_board,play_button,mouse_x,mouse_y,scientist,cure,viruses)
 
-def check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scientist,cure,viruses):
+        elif event.type==pygame.K_SPACE:
+
+            check_play_button(ai_settings,screen,stats,score_board,play_button,mouse_x,mouse_y,scientist,cure,viruses)
+
+def check_play_button(ai_settings,screen,stats,score_board,play_button,mouse_x,mouse_y,scientist,cure,viruses):
 
 #re_shaping the game
     button_clicked=play_button.rect.collidepoint(mouse_x,mouse_y)
@@ -90,6 +94,11 @@ def check_play_button(ai_settings,screen,stats,play_button,mouse_x,mouse_y,scien
         pygame.mouse.set_visible(False)
         stats.reset_stats()
         stats.game_active=True
+
+        #reseting scoreboard images
+        score_board.prep_high_score()
+        score_board.prep_level()
+        score_board.prep_score()
 
         viruses.empty()
         cure.empty()
@@ -227,10 +236,14 @@ def check_cure_collision(ai_settings,screen,stats,score_board,scientist,viruses,
 
             stats.score+=ai_settings.virus_points*len(viruses)
             score_board.prep_score()
+        check_high_scores(stats,score_board)
 
     if len(viruses) == 0:
         cure.empty()
         ai_settings.increase_speed()
+        #starting a new level
+        stats.level+=1
+        score_board.prep_level()
         create_fleet(ai_settings, screen, scientist, viruses)
 
 def scientist_hit(ai_settings,stats,screen,scientist,viruses,cure):
@@ -260,3 +273,9 @@ def check_viruses_bottom(ai_settings,stats,screen,scientist,viruses,cure):
         if covid.rect.bottom>=screen_rect.bottom:
             scientist_hit(ai_settings,stats,screen,scientist,viruses,cure)
             break
+
+def check_high_scores(stats,score_board):
+
+    if stats.score>stats.high_score:
+        stats.high_score=stats.score
+        score_board.prep_high_score()
