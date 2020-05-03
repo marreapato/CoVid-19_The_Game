@@ -12,3 +12,4 @@ class Games_stats():
         self.scientist_left=self.ai_settings.scientist_limit
         self.score=0
         self.level=1
+ 
