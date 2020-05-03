@@ -1,4 +1,7 @@
 import pygame.font
+from pygame.sprite import Group
+
+from scientist import Scientist
 
 class Scoreboard():
 
@@ -21,6 +24,7 @@ class Scoreboard():
         self.prep_score()
         self.prep_high_score()
         self.prep_level()
+        self.prep_scientists()
 
     def prep_score(self):
 
@@ -39,6 +43,10 @@ class Scoreboard():
         self.screen.blit(self.score_image,self.score_rect)
         self.screen.blit(self.high_score_image,self.high_score_rect)
         self.screen.blit(self.level_image,self.level_rect)
+
+        #draw the number of scientists left
+        self.scientists.draw(self.screen)
+
     def prep_high_score(self):
 
         high_score=int(round(self.stats.high_score,-1))
@@ -63,4 +71,16 @@ class Scoreboard():
         self.level_rect=self.level_image.get_rect()
         self.level_rect.right=self.score_rect.right
         self.level_rect.top=self.score_rect.bottom+10
+
+
+    def prep_scientists(self):
+
+        self.scientists=Group()
+
+        for scientist_number in range(self.stats.scientist_left):
+
+            scientist=Scientist(self.ai_settings,self.screen)
+            scientist.rect.x=10+scientist_number*scientist.rect.width
+            scientist.rect.y=10
+            self.scientists.add(scientist)
 
