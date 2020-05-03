@@ -1,12 +1,14 @@
 
 import pygame
+from pygame.sprite import Sprite
 
 #Building the hero of our game
 
-class Scientist():
+class Scientist(Sprite):
 
     def __init__(self,ai_settings,screen):
 
+        super(Scientist,self).__init__()
         self.screen=screen
         self.ai_settings=ai_settings
 
