@@ -54,3 +54,4 @@ class Settings():
         self.virus_points=int(self.virus_points*self.score_scale)#increasing the score as the game speeds up
 
 
+ 
