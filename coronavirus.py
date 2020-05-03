@@ -44,4 +44,4 @@ class Covid_19(Sprite):
         self.x+=(self.ai_settings.corona_speed_factor*self.ai_settings.fleet_direction)
 
         self.rect.x=self.x
-
+ 
