@@ -5,5 +5,5 @@ The in-game sprites were caught from [this website](https://opengameart.org/art-
 
 - [Scientist Sprite available here](https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgKCdvImeCww/view) 
 - [Coronavirus Sprite available here](https://www.piskelapp.com/p/agxzfnBpc2tlbC1hcHByEwsSBlBpc2tlbBiAgKDdm4LYCgw/view) 
-
+- [Background available here](https://opengameart.org/content/watercolor-world-map) 
 This project was built while studying the book Python Crash Course by Eric Matthes
