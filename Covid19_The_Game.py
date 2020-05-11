@@ -24,10 +24,20 @@ def run_game():
 
     pygame.init()
 
+    pygame.mixer.init()
+
+    pygame.mixer.music.load("USSR.mp3")
+    pygame.mixer.music.play()
+
     ai_settings = Settings()
 
     screen = pygame.display.set_mode(
         (ai_settings.screen_width, ai_settings.screen_height))  # uses a tuple to set the dimensions
+
+    background = pygame.image.load('combined_worldmap_wc_3800.png')
+
+    background = pygame.transform.scale(background,(ai_settings.screen_width,ai_settings.screen_height))  #background with the same
+    #size of the screen
 
     #making the play button
 
@@ -42,6 +52,7 @@ def run_game():
     viruses=Group()
     cure=Group()
 
+
     #storing stats and score
     stats=Games_stats(ai_settings)
     score_board=Scoreboard(ai_settings,screen,stats)
@@ -55,13 +66,11 @@ def run_game():
         gf.check_events(ai_settings,screen,stats,score_board,scientist,cure,viruses,play_button)
         if stats.game_active==True:
             scientist.update()
-        #getting rid of cures that have disappeared
-
+            #getting rid of cures that have disappeared
             gf.update_cure(ai_settings,screen,stats,score_board,scientist,viruses,cure)
             gf.update_viruses(ai_settings,stats,screen,score_board,scientist,viruses,cure)
-        # Drawn the mostly recent screen
-
-        gf.update_screen(ai_settings,screen,stats,score_board,scientist,viruses,cure,play_button)
+        # Draw the mostly recent screen
+        gf.update_screen(background,screen,stats,score_board,scientist,viruses,cure,play_button)
 
 
 
