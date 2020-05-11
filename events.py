@@ -38,6 +38,13 @@ def check_keydown_events(event,ai_settings,screen,scientist,cure):#events trigge
     elif event.key==pygame.K_q:
 
         sys.exit()
+    if event.key == pygame.K_m:
+
+        pygame.mixer.music.pause()
+
+    if event.key == pygame.K_n:
+
+        pygame.mixer.music.unpause()
 
 
 def check_key_up_events(event,scientist):#events triggered when realeasing a key
@@ -95,6 +102,12 @@ def check_play_button(ai_settings,screen,stats,score_board,play_button,mouse_x,m
         stats.reset_stats()
         stats.game_active=True
 
+        pygame.mixer.music.pause()
+
+        pygame.mixer.music.load('Evil Incoming.mp3')
+
+        pygame.mixer.music.play(-1)
+
         #reseting scoreboard images
         score_board.prep_high_score()
         score_board.prep_level()
@@ -111,9 +124,10 @@ def check_play_button(ai_settings,screen,stats,score_board,play_button,mouse_x,m
 
 
 
-def update_screen(ai_settings,screen,stats,score_board,scientist,viruses,cure,play_button):
 
-    screen.fill(ai_settings.bg_color)
+def update_screen(background,screen,stats,score_board,scientist,viruses,cure,play_button):
+
+    screen.blit(background, (0,0))#to properly draw a bg image
 
     #ai_settings stands for the Settings() class' instance
 
@@ -234,7 +248,6 @@ def check_cure_collision(ai_settings,screen,stats,score_board,scientist,viruses,
 
     if collisions:
         for viruses in collisions.values():
-
             stats.score+=ai_settings.virus_points*len(viruses)
             score_board.prep_score()
         check_high_scores(stats,score_board)
