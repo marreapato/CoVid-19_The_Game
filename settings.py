@@ -4,9 +4,8 @@ class Settings():
 
     def __init__(self):
 
-        self.screen_width=1000
+        self.screen_width=1200
         self.screen_height=600
-        self.bg_color=(100,10,0)
 
         self.scientist_limit=3
 
@@ -35,7 +34,7 @@ class Settings():
 
     def initialize_dinamic_settings(self):
 
-        self.scientist_speed=1.5
+        self.scientist_speed=5
         self.cure_speed_factor=3
         self.corona_speed_factor=1
 
@@ -54,4 +53,3 @@ class Settings():
         self.virus_points=int(self.virus_points*self.score_scale)#increasing the score as the game speeds up
 
 
- 
