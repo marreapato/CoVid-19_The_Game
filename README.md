@@ -9,6 +9,6 @@ The in-game sprites were caught from [this website](https://opengameart.org/art-
 - [Background music](https://freepd.com/music/Evil%20Incoming.mp3)
 - [Main menu music](https://freepd.com/music/USSR.mp3)
 
-The setup.py was used to build an executable file for the game with cx_Freeze, you can download it here:(available soon) 
+The setup.py was used to build an executable file for the game with cx_Freeze, you can download it here:[Covid19 The Game](https://marreapato.itch.io/covid19-the-game) 
 
 This project was built while studying the book Python Crash Course by Eric Matthes
