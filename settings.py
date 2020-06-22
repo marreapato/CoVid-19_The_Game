@@ -25,7 +25,7 @@ class Settings():
 
 
         #speeding up the game
-        self.speedup_scale=1.1
+        self.speedup_scale=1
 
         #how quick the virus' point value increases
         self.score_scale=1.5
@@ -34,9 +34,9 @@ class Settings():
 
     def initialize_dinamic_settings(self):
 
-        self.scientist_speed=5
-        self.cure_speed_factor=3
-        self.corona_speed_factor=1
+        self.scientist_speed=8
+        self.cure_speed_factor=8
+        self.corona_speed_factor=3
 
         #1 represents right and -1 represents left
         self.fleet_direction=1
