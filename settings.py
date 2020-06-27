@@ -25,7 +25,7 @@ class Settings():
 
 
         #speeding up the game
-        self.speedup_scale=1
+        self.speedup_scale=1.01
 
         #how quick the virus' point value increases
         self.score_scale=1.5
