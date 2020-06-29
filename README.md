@@ -11,8 +11,6 @@ The in-game sprites were caught from [this website](https://opengameart.org/art-
 
 The setup.py was used to build an executable file for the game with cx_Freeze(using python setup.py build), you can download it here:[Covid19 The Game](https://marreapato.itch.io/covid19-the-game) 
 
-This project was built while studying the book Python Crash Course by Eric Matthes
-
 [![Generic badge](https://img.shields.io/badge/<Python>-<3.7>-<COLOR>.svg)](https://shields.io/)
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
