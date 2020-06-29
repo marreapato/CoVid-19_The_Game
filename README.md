@@ -13,7 +13,6 @@ The setup.py was used to build an executable file for the game with cx_Freeze(us
 
 This project was built while studying the book Python Crash Course by Eric Matthes
 
-<a href="https://github.com/python/black"><img alt="Code style: black" src="https://img.shields.io/badge/code%20style-black-000000.svg"></a>
-  <a href="http://kivmob.com"><img alt="docs" src="https://img.shields.io/static/v1?label=docs&message=passing&color=blue"/></a>
-  <!--
+[![Generic badge](https://img.shields.io/badge/<Python>-<3.7>-<COLOR>.svg)](https://shields.io/)
+
 
