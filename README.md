@@ -14,5 +14,7 @@ The setup.py was used to build an executable file for the game with cx_Freeze(us
 This project was built while studying the book Python Crash Course by Eric Matthes
 
 [![Generic badge](https://img.shields.io/badge/<Python>-<3.7>-<COLOR>.svg)](https://shields.io/)
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
 
 
